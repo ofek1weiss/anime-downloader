@@ -1,0 +1,1 @@
+ANIME_PATTERN = r'^\[HorribleSubs\] (.*?) - ([0-9]+) .*$'
