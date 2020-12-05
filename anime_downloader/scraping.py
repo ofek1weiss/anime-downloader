@@ -8,7 +8,7 @@ from anime_downloader import consts
 
 
 BASE_URL = 'https://nyaa.si'
-SEARCH_URL_FORMAT = BASE_URL + '/?q=horriblesubs+{anime}+{resolution}/'
+SEARCH_URL_FORMAT = BASE_URL + '/?q={source}+{anime}+{resolution}/'
 
 
 def _get_magnet(url: str) -> str:
@@ -18,7 +18,7 @@ def _get_magnet(url: str) -> str:
 
 def _get_episode_tags(soup: BeautifulSoup) -> List[Tag]:
     ret = []
-    success_tags = soup.find_all('tr', {'class': 'success'})
+    success_tags = soup.find_all('tr')
     for tag in success_tags:
         a_tags = tag.find_all('a')
         ret += [a for a in a_tags if re.match(consts.ANIME_PATTERN, str(a.string))]
@@ -35,8 +35,8 @@ def _get_relevant_tags(episode_tags: List[Tag], last_episode: int) -> List[Tag]:
     return ret
 
 
-def get_magnets(anime: str, resolution: str, last_episode: int) -> List[str]:
-    url = SEARCH_URL_FORMAT.format(anime=anime, resolution=resolution)
+def get_magnets(source: str, anime: str, resolution: str, last_episode: int) -> List[str]:
+    url = SEARCH_URL_FORMAT.format(source=source, anime=anime, resolution=resolution)
     soup = BeautifulSoup(requests.get(url).content, features='html.parser')
     episode_tags = _get_episode_tags(soup)
     relevant_tags = _get_relevant_tags(episode_tags, last_episode)
