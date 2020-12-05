@@ -1,0 +1,30 @@
+{
+    "anime": [
+        {
+            "name": "Enen no Shouboutai - Ni no Shou",
+            "resolution": "720p",
+            "source": "Erai-raws"
+        },
+        {
+            "name": "Black Clover",
+            "resolution": "1080p",
+            "source": "FFA"
+        },
+        {
+            "name": "Digimon Adventure (2020)",
+            "resolution": "1080p",
+            "source": "FFA"
+        },
+        {
+            "name": "Jujutsu Kaisen (TV)",
+            "resolution": "1080p",
+            "source": "FFA"
+        },
+        {
+            "name": "Haikyuu!! To the Top 2nd Season",
+            "resolution": "720p",
+            "source": "Erai-raws"
+        }
+    ],
+    "download_path": "E:\\Torrent Downloads\\raw"
+}
