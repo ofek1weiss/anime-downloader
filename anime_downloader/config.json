@@ -1,30 +1,25 @@
 {
     "anime": [
         {
-            "name": "Enen no Shouboutai - Ni no Shou",
-            "resolution": "720p",
-            "source": "Erai-raws"
-        },
-        {
-            "name": "Black Clover",
+            "name": "Platinum End",
             "resolution": "1080p",
-            "source": "FFA"
+            "source": "SubsPlease"
         },
         {
-            "name": "Digimon Adventure (2020)",
+            "name": "Ousama Ranking",
             "resolution": "1080p",
-            "source": "FFA"
+            "source": "SubsPlease" 
         },
         {
-            "name": "Jujutsu Kaisen (TV)",
+            "name": "Kimetsu no Yaiba - Yuukaku-hen",
             "resolution": "1080p",
-            "source": "FFA"
+            "source": "SubsPlease"
         },
         {
-            "name": "Haikyuu!! To the Top 2nd Season",
-            "resolution": "720p",
+            "name": "Shingeki no Kyojin - The Final Season Part 2",
+            "resolution": "1080p",
             "source": "Erai-raws"
         }
     ],
-    "download_path": "E:\\Torrent Downloads\\raw"
+    "download_path": "D:\\Torrent Downloads\\Shows\\Weekly"
 }

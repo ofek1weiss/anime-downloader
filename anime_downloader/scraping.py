@@ -5,15 +5,20 @@ import requests
 from bs4 import BeautifulSoup, Tag
 
 from anime_downloader import consts
+from anime_downloader.types import TorrentMetadata
 
 
 BASE_URL = 'https://nyaa.si'
 SEARCH_URL_FORMAT = BASE_URL + '/?q={source}+{anime}+{resolution}/'
 
 
-def _get_magnet(url: str) -> str:
+def _get_torrent_metadata(url: str) -> TorrentMetadata:
     soup = BeautifulSoup(requests.get(url).content, features='html.parser')
-    return str(soup.find('a', {'class': 'card-footer-item'})['href'])
+    name = soup.find('h3', {'class': 'panel-title'}).text.strip()
+    links = soup.find('div', {'class': 'panel-footer'}).find_all('a')
+    url = BASE_URL + links[0]['href']
+    magnet = links[1]['href']
+    return TorrentMetadata(name, url, magnet)
 
 
 def _get_episode_tags(soup: BeautifulSoup) -> List[Tag]:
@@ -40,4 +45,4 @@ def get_magnets(source: str, anime: str, resolution: str, last_episode: int) -> 
     soup = BeautifulSoup(requests.get(url).content, features='html.parser')
     episode_tags = _get_episode_tags(soup)
     relevant_tags = _get_relevant_tags(episode_tags, last_episode)
-    return [_get_magnet(BASE_URL + tag['href']) for tag in relevant_tags]
+    return [_get_torrent_metadata(BASE_URL + tag['href']).magnet for tag in relevant_tags]
